@@ -6,9 +6,24 @@ import { AppError } from '../utils/appError.js';
 // Regras:
 //   - o nome da categoria é OBRIGATÓRIO (ex.: 400 se faltar).
 // Métodos: criar e listar.
-export class CategoriasService {
+/**export class CategoriasService {
   constructor(categoriasRepository) {
     this.repo = categoriasRepository;
   }
   // TODO: criar(dados), listar().
+}**/
+
+
+export class CategoriasService {
+  constructor(categoriasRepository) {
+    this.categoriasRepository = categoriasRepository;
+  } async listarTodas() {
+    return await
+      this.categoriasRepository.findAll();
+  } async criar(dados) {
+    if (!dados.nome || dados.nome.trim() === '')
+      { throw new Error('O nome da categoria é obrigatório.'); }
+      return
+      await this.categoriasRepository.create({ nome: dados.nome.trim() });
+  }
 }

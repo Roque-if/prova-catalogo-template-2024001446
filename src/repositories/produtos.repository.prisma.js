@@ -1,4 +1,4 @@
-import { prisma } from '../config/database.js';
+/**import { prisma } from '../config/database.js';
 
 // REPOSITÓRIO de Produto — a ÚNICA camada que conversa com o Prisma.
 // Implemente:
@@ -9,4 +9,20 @@ import { prisma } from '../config/database.js';
 // Dica: use `prisma.produto.*`. Tudo é assíncrono.
 export class ProdutosRepositoryPrisma {
   // TODO: implemente os métodos descritos acima.
-}
+}**/
+
+
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient(); export
+  const produtosRepository = {
+    async findAll() {
+      return await prisma.produto.findMany({
+        include: { categoria: true }
+      });
+    }, async create(data) {
+      return await prisma.produto.create({
+        data: { nome: data.nome, preco: Number(data.preco), categoriaId: Number(data.categoriaId) }
+      });
+    }
+  };
