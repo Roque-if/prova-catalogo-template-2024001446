@@ -1,4 +1,9 @@
 node_modules/
 .env
+<<<<<<< HEAD
 *.db
 *.db-journal
+=======
+prisma/*.db
+prisma/*.db-journal
+>>>>>>> 6dd7bc9 (feat: modelagem prisma e configuracoes iniciais)
